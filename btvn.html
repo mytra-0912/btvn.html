@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Menu with Dropdown</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .menu {
+            background-color: #555; /* Màu nền của menu */
+            color: white;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000; /* Đảm bảo menu luôn nằm trên cùng */
+        }
+
+        .menu ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .menu ul li {
+            position: relative;
+        }
+
+        .menu ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: block;
+            position: relative;
+        }
+
+        .menu ul li a:hover {
+            background-color: #333; /* Màu nền khi hover */
+        }
+
+        /* Thêm khối màu đỏ cạnh "Sản phẩm" (bên trái) */
+        .menu ul li:first-child a::before {
+            content: '';
+            position: absolute;
+            left: -20px; /* Đặt khối màu cạnh chữ */
+            top: 0;
+            bottom: 0;
+            width: 15px;
+            background-color: brown;
+        }
+        /* Thêm khối màu đỏ cạnh "Độc quyền tháng 10" (bên phải) */
+        .menu ul li:last-child a::after {
+            content: '';
+            position: absolute;
+            right: -20px; /* Khối màu nằm bên phải */
+            top: 0;
+            bottom: 0;
+            width: 15px;
+            background-color: red;
+        }
+
+        /* Ẩn menu con mặc định */
+        .menu ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #666;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        /* Hiện menu con khi hover vào "Sản phẩm" */
+        .menu ul li:hover ul {
+            display: block;
+        }
+        .menu ul li ul li a {
+            padding: 10px 15px;
+            white-space: nowrap; /* Đảm bảo chữ không bị ngắt dòng */
+        }
+
+        .menu ul li ul li a:hover {
+            background-color: #444; /* Màu nền khi hover vào mục con */
+        }
+
+        .content {
+            padding: 20px;
+            height: 1500px; /* Tạo chiều dài cho nội dung để kiểm tra cuộn */
+        }
+
+        .content p {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="#">Sản phẩm</a>
+                    <!-- Menu con chỉ xuất hiện khi hover -->
+                    <ul>
+                        <li><a href="#">Áo khoác</a></li>
+                        <li><a href="#">Túi xách</a></li>
+                        <li><a href="#">Đầm công sở</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Bộ sưu tập</a></li>
+                <li><a href="#">Showroom</a></li>
+                <li><a href="#">Độc quyền tháng 10</a></li>
+            </ul>
+        </nav>
+    </header>
+</body>
+</html>
